@@ -37,6 +37,4 @@ void waitMicros() {
     }
 }
  
-void loop() {
-    
-}
+void loop() {}
