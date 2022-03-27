@@ -1,5 +1,5 @@
 {
-  "sketch": "tasks\\task2\\sketch.ino",
+  "sketch": "tasks\\task3\\sketch.ino",
   "output": "build",
   "board": "arduino:avr:uno",
   "port": "COM3",
