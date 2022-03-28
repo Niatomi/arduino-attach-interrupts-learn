@@ -12,13 +12,8 @@ void setup() {
 void lightBlinking() {
     
     ledVarChange();
+    waitMicros();
 
-    for (int i = 0; i < 200; i++) {
-        
-        Serial.println(i);
-        waitMicros();
-
-    }
 }
 
 static void ledVarChange() {
@@ -28,6 +23,13 @@ static void ledVarChange() {
 
 void waitMicros() {
     unsigned int microsTimerBuffer = micros();
+
+    for (int i = 0; i < 200; i++) {
+        
+        Serial.println(i);
+        waitMicros();
+
+    }
 
     boolean exitState = true;
     while (exitState) {
