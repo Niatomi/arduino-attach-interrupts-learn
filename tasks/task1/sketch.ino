@@ -22,19 +22,17 @@ static void ledVarChange() {
 }
 
 void waitMicros() {
-    unsigned int microsTimerBuffer = micros();
-
     for (int i = 0; i < 200; i++) {
         
+        unsigned int microsTimerBuffer = micros();
+        
         Serial.println(i);
-        waitMicros();
 
-    }
-
-    boolean exitState = true;
-    while (exitState) {
-        if (micros() - microsTimerBuffer > 50000) {
-            exitState = false;
+        boolean exitState = true;
+        while (exitState) {
+            if (micros() - microsTimerBuffer > 50000) {
+                exitState = false;
+            }
         }
     }
 }
