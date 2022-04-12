@@ -13,13 +13,13 @@ char hexaKeys[ROWS][COLS] = {
 };
 byte rowPins[ROWS] = {5, 4, 3, 2}; 
 byte colPins[COLS] = {9, 8, 7, 6}; 
-Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
+Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
 
 void setup(){
   Serial.begin(9600);
   pinMode(ZOOMER, OUTPUT);
   digitalWrite(ZOOMER, 0);
-
+  attachInterrupt(customKeypad.getKey(), makeSound, RISING);
 }
 
 /*
@@ -28,16 +28,19 @@ void setup(){
 * положения ключа в матрице hexaKeys
 * @param customKey нажатая клавиша
 */
-void loop(){
-    char customKey = customKeypad.getKey();
+void makeSound() {
+  char customKey = customKeypad.getKey();
     
     if (customKey){ 
       for (int y = 0; y < 4; y++) {
         for (int x = 0; x < 4; x++) {
           if (hexaKeys[x][y] == customKey) 
-            tone(ZOOMER, 440 + x*100 + y*50, 200);
+            tone(ZOOMER, 220 + 100*x+ 50*y, 200);
         }
       }
     }
+}
 
+void loop() {
+  char customKey = customKeypad.getKey();
 }
